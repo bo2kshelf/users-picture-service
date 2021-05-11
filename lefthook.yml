@@ -1,0 +1,20 @@
+commit-msg:
+  commands:
+    commitlint:
+      run: yarn commitlint --edit ./.git/COMMIT_EDITMSG
+
+pre-commit:
+  parallel: true
+  commands:
+    eslint:
+      run: yarn run lint:eslint
+    prettier:
+      run: yarn run lint:prettier
+    hadolint:
+      files: git diff --name-only --staged
+      glob: '*Dockerfile*'
+      run: yarn run lint:hadolint {staged_files}
+    validate-renovate:
+      files: git diff --name-only --staged
+      glob: '.renovaterc'
+      run: yarn run lint:renovate

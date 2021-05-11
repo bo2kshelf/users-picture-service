@@ -1,0 +1,8 @@
+{
+  "root": true,
+  "extends": ["@bo2kshelf/eslint-config/nest"],
+  "rules": {
+    "graphql/required-fields": [0],
+    "unicorn/no-null": [0]
+  }
+}
